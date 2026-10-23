@@ -127,6 +127,7 @@ flowchart LR
 powershell -ExecutionPolicy Bypass -File .\verify.ps1   # compile, self-test, alert rules, GUI smoke test
 python tools\make_media.py                              # regenerate the images in this README
 python tools\check_layout.py                            # check the screenshot's alignment
+powershell -ExecutionPolicy Bypass -File .\tools\check_release.ps1   # check the published release and its checksum
 ```
 
 CI runs the same checks on Windows with Python 3.10, 3.12 and 3.13.
