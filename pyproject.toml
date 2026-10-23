@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telltale-gauge"
+version = "1.0.0"
+description = "A tiny always-on-top hardware gauge for Windows that stays quiet until your PC needs you."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "barraco002" }]
+keywords = ["windows", "system-monitor", "hardware-monitor", "cpu", "gpu", "ram", "desktop-widget", "tkinter"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Monitoring",
+]
+dependencies = ["psutil>=5.9"]
+
+[project.optional-dependencies]
+nvidia = ["nvidia-ml-py>=12"]
+cpu-temp = ["WMI>=1.5", "pywin32>=306"]
+all = ["nvidia-ml-py>=12", "WMI>=1.5", "pywin32>=306"]
+
+[project.gui-scripts]
+telltale = "telltale:main"        # opens the panel without a console window
+
+[project.scripts]
+telltale-cli = "telltale:main"    # same entry point with a console, for --self-test and --version
+
+[project.urls]
+Homepage = "https://github.com/barraco002/telltale"
+Issues = "https://github.com/barraco002/telltale/issues"
+Changelog = "https://github.com/barraco002/telltale/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+py-modules = ["telltale"]
